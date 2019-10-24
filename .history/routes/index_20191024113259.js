@@ -19,24 +19,24 @@ router.get('/singupuser', function(req, res) {
 //post user data to mydb
 router.post('/signup', function(req, res) {
   bcrypt.hash(req.body.password, saltRounds, function (err,   hash) {
-    var db = req.db;
-    var userName = req.body.name;
-    var userEmail = req.body.email;
-    //var password = req.body.password;
-    var collection = db.get('usercollection');
-    collection.insert({
-        "username" : userName,
-        "email" : userEmail,
-        "userpassword" : hash
-    }, function (err, doc) {
-        if (err) {
-            res.send("There was a problem adding the information to the database.");
-        }
-        else {
-            res.redirect("/singupuser");
-        }
-    });
+  var db = req.db;
+  var userName = req.body.name;
+  var userEmail = req.body.email;
+  var password = req.body.password;
+  var collection = db.get('usercollection');
+  collection.insert({
+      "username" : userName,
+      "email" : userEmail,
+      "userpassword" : password
+  }, function (err, doc) {
+      if (err) {
+          res.send("There was a problem adding the information to the database.");
+      }
+      else {
+          res.redirect("/singupuser");
+      }
   });
+});
 });
 
 /* Post addUser Function 
