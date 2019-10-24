@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const app = express();
+const {User} = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,7 +17,7 @@ router.get('/singupuser', function(req, res) {
   res.render('singupuser', { title: 'Inscription' });
 });
 //post user data to mydb
-router.post('/signup', function(req, res) {
+app.post('/signup', function(req, res) {
   var db = req.db;
   var userName = req.body.name;
   var userEmail = req.body.email;

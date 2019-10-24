@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const {User} = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,29 +16,18 @@ router.get('/singupuser', function(req, res) {
   res.render('singupuser', { title: 'Inscription' });
 });
 //post user data to mydb
-router.post('/signup', function(req, res) {
-  var db = req.db;
-  var userName = req.body.name;
-  var userEmail = req.body.email;
-  var password = req.body.password;
-  // Set our collection
-  var collection = db.get('usercollection');
-  // Submit to the DB
-  collection.insert({
-      "username" : userName,
-      "email" : userEmail,
-      "userpassword" : password
-  }, function (err, doc) {
-      if (err) {
-          res.send("There was a problem adding the information to the database.");
-      }
-      else {
-          res.redirect("/singupuser");
-      }
-  });
+app.post('/signup', (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  }).save((err, response)=>{
+    if(err) res.status(400).send(err);
+    res.status(200).send(response);
+  })
 });
 
-/* Post addUser Function 
+/* Post addUser Function */
 router.post('/adduser', function(req, res) {
   // Set DB variable
   var db = req.db;
@@ -61,7 +51,6 @@ router.post('/adduser', function(req, res) {
       }
   });
 });
-*/
 
 /* GET Userlist page */
 router.get('/userlist', function(req, res) {

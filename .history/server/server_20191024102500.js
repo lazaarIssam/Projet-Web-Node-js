@@ -21,7 +21,7 @@ const {User} = require('../models/user');
 app.use(bodyParser.json());
 
 //post user data to mydb
-app.post('/signup', (req, res) => {
+app.post('/api/user/signup', (req, res) => {
   const user = new User({
     name: req.body.name,
     email: req.body.email,

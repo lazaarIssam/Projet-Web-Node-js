@@ -21,16 +21,6 @@ const {User} = require('../models/user');
 app.use(bodyParser.json());
 
 //post user data to mydb
-app.post('/signup', (req, res) => {
-  const user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password
-  }).save((err, response)=>{
-    if(err) res.status(400).send(err);
-    res.status(200).send(response);
-  })
-});
 
 const port = process.env.PORT || 4000;
 
