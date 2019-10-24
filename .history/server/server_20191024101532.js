@@ -12,7 +12,6 @@ const app = express();
 try {
     mongoose.connect('mongodb://localhost:27017/mydb', { useNewUrlParser: true }).then(()=> console.log("Connecte !"));
   } catch (error) {
-    console.log("Erreur !" +error);
     handleError(error);
   }
 
