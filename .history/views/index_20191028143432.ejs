@@ -10,12 +10,14 @@
     </div>
   </head>
   <body>
+    <h1>Titre</h1>
+    <p>Hello, Bienvenue sur notre site !</p>
     <h1>Annonce List</h1>
     <ul>
       <%
         var list = '';
         for (i = 0; i < annoncelist.length; i++) {
-          list += '<li><strong>' + annoncelist[i].titre +' '+ annoncelist[i].statusPub + '</a></strong></li>';
+          list += '<li>' + annoncelist[i].titre +'    '+ annoncelist[i].statusPub + '</a></li>';
         }
       %>
       <%- list %>

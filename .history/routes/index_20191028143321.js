@@ -5,14 +5,7 @@ const saltRounds = 10;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var db = req.db;
-  var collection = db.get('annoncecollection');
-  collection.find({},{},function(e,docs){
-      res.render('index', {
-          "annoncelist" : docs
-      });
-  });
-  //res.render('index', { title: 'Test' });
+  res.render('index', { title: 'Test' });
 });
 
 /* GET Hello World page */
@@ -59,7 +52,7 @@ router.get('/userlist', function(req, res) {
 });
 
 /* GET Annoncelist page */
-router.get('/annoncelist', function(req, res) {
+router.get('/', function(req, res) {
   var db = req.db;
   var collection = db.get('annoncecollection');
   collection.find({},{},function(e,docs){
