@@ -141,7 +141,6 @@ router.post('/log', function(req, res) {
 router.get('/logout', function(req, res) {
   session = req.session;
   req.session.destroy;
-  req.body.decobtn
    res.redirect('/singupuser');
 });
 
@@ -150,7 +149,7 @@ router.get('/redirects', function(req, res) {
   session = req.session;
   console.log(session.uniqueID);
   if(session.uniqueID){
-    res.render('/', { sess: session.uniqueID });
+    res.render('/',, { sess: session.uniqueID });
   }else{
     res.end('who are you ?' );
   }

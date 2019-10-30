@@ -19,8 +19,9 @@ router.use(sessions({
 router.get('/', function(req, res, next) {
   session = req.session;
   if(session.uniqueID){
-     res.redirect('/');
+     res.redirect('/redirects');
   }
+
   var db = req.db;
   var collection = db.get('annoncecollection');
   collection.find({},{},function(e,docs){
@@ -117,13 +118,10 @@ router.post('/log', function(req, res) {
       //---------------
       try {
         if(req.body.logemail == result.email){
-          if(req.body.logpassword == result.userpassword){
-            session.uniqueID == req.body.logemail;
-            //res.end('correcte');
-            res.redirect('/redirects');
-          }else{
-            res.end('mot de passe incorrect');
-          }
+          if
+          //res.end('correcte');
+        }else{
+          res.end('Email incorrect');
         }
       }
       catch(error) {
@@ -131,7 +129,7 @@ router.post('/log', function(req, res) {
       }
       //---------------
     }else{
-      res.end('Email incorrect');
+      res.end('erreur');
     }
   //});
   });
@@ -141,7 +139,6 @@ router.post('/log', function(req, res) {
 router.get('/logout', function(req, res) {
   session = req.session;
   req.session.destroy;
-  req.body.decobtn
    res.redirect('/singupuser');
 });
 
@@ -150,9 +147,9 @@ router.get('/redirects', function(req, res) {
   session = req.session;
   console.log(session.uniqueID);
   if(session.uniqueID){
-    res.render('/', { sess: session.uniqueID });
+     res.redirect('/');
   }else{
-    res.end('who are you ?' );
+    res.end('who are you ?');
   }
 });
 

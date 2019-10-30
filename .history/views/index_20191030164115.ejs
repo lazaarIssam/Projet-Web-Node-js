@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Acceuil  </title>
+    <title>Acceuil <%= sess %> </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <div>
-        <a role="button" href="/logout" class="btn btn-outline-success" name="decobtn">Deconnexion</a>
+        <a role="button" href="/logout" class="btn btn-outline-success">Deconnexion</a>
       <a role="button" href="/login" class="btn btn-outline-success">Connexion</a>
       <a role="button" href="/singupuser" class="btn btn-outline-danger" name="singupbtn">Inscription</a>
     </div>
