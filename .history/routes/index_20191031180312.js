@@ -12,6 +12,17 @@ router.use(bodyParser.urlencoded({extended: true}));
 var indexCont = require('../controller/index'); 
 var userCont = require('../controller/user'); 
 
+var session;
+var us_email='';
+/*
+router.use(sessions({
+  secret: 'aaaa',
+  resave: true,
+  cookie: { secure: true },
+  saveUninitialized: true
+}))
+*/
+
 /* GET home page. */
 router.get('/', indexCont.acceuil);
 

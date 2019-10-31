@@ -12,6 +12,17 @@ router.use(bodyParser.urlencoded({extended: true}));
 var indexCont = require('../controller/index'); 
 var userCont = require('../controller/user'); 
 
+var session;
+var us_email='';
+/*
+router.use(sessions({
+  secret: 'aaaa',
+  resave: true,
+  cookie: { secure: true },
+  saveUninitialized: true
+}))
+*/
+
 /* GET home page. */
 router.get('/', indexCont.acceuil);
 
@@ -34,6 +45,6 @@ router.get('/login', userCont.loginpage);
 router.post('/log', userCont.login);
 
 /* get logout page */
-router.get('/logout', userCont.logout);
+router.get('/logout', );
 
 module.exports = router;
