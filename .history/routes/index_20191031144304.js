@@ -12,7 +12,7 @@ var session;
 var us_email='';
 router.use(sessions({
   secret: 'aaaa',
-  resave: true,
+  resave: false,
   cookie: { secure: true },
   saveUninitialized: true
 }))

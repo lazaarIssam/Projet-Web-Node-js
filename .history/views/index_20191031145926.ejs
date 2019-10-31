@@ -22,15 +22,15 @@
   </head>
   <body>
     <h1>Annonce List  <%= sess %></h1>
-      <% annoncelist.forEach(function (ann) { %> 
-        <div class="card" style="width: 20rem;">
+      <% annoncelist.forEach(function (ann) { %>
+        <div class="card" style="width: 20rem;height: 30rem;">
           <img class="card-img-top" src="aaaa.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><%= ann.titre %></h5>
             <p class="card-text"><%= ann.desc %></p>
             <a href="#" class="btn btn-primary">Details</a>
-        </div> 
-      </div><br>
+          </div>
+        </div> <br>
         <% }); %>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

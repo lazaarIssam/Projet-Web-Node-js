@@ -12,7 +12,7 @@ var session;
 var us_email='';
 router.use(sessions({
   secret: 'aaaa',
-  resave: true,
+  resave: false,
   cookie: { secure: true },
   saveUninitialized: true
 }))
@@ -113,6 +113,7 @@ router.post('/log', function(req, res) {
             bcrypt.compare(req.body.logpassword,result.userpassword,(err, ress)=>{
             if(ress){
             session.uniqueID = result._id;
+            session
             us_email=req.body.logemail;
             //res.end('correcte ' + session.uniqueID);
             res.render('profil',{'sess': session.uniqueID});

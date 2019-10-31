@@ -12,7 +12,7 @@ var session;
 var us_email='';
 router.use(sessions({
   secret: 'aaaa',
-  resave: true,
+  resave: false,
   cookie: { secure: true },
   saveUninitialized: true
 }))
@@ -99,12 +99,24 @@ router.get('/login', function(req, res) {
 
 /* POST login page */
 router.post('/log', function(req, res) {
+  //res.end(JSON.stringify(req.body));
+ //bcrypt.hash(req.body.userpassword, saltRounds, function (err,   hash) {
   var db = req.db;
   var collection = db.get('usercollection');
   session = req.session;
   session.destroy();
+  //if(session.uniqueID){
+    // res.redirect('/redirects');
+  //}
   var unsermail = req.body.logemail;
+  //var userpass = req.body.logpassword;
   db.get('usercollection').findOne({'email':unsermail}).then( function(result) {
+    //if (err) throw err;
+    //if(req.body.logemail == result.email && req.body.logpassword == result.userpassword){
+      //session.uniqueID == req.body.logemail;
+    //}
+    //res.redirect('/redirects');
+    //res.end('unsermail : '+result);
     if(result){
       //---------------
       try {
@@ -112,7 +124,7 @@ router.post('/log', function(req, res) {
           //if(req.body.logpassword == result.userpassword){
             bcrypt.compare(req.body.logpassword,result.userpassword,(err, ress)=>{
             if(ress){
-            session.uniqueID = result._id;
+            session.uniqueID = req.body.logemail;
             us_email=req.body.logemail;
             //res.end('correcte ' + session.uniqueID);
             res.render('profil',{'sess': session.uniqueID});
