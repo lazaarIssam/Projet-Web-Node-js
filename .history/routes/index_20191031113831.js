@@ -121,14 +121,13 @@ router.post('/log', function(req, res) {
       try {
         if(req.body.logemail == result.email){
           //if(req.body.logpassword == result.userpassword){
-            bcrypt.compare(req.body.logpassword,result.userpassword,(err, ress)=>{
+            bcrypt.compare(req.body.logpassword,result.userpassword.hash,(err, ress)=>{
             if(ress){
             session.uniqueID == req.body.logemail;
-            //res.end('correcte ' +ress);
-            res.redirect('/redirects');
+            res.end('correcte');
+            //res.redirect('/redirects');
           }else{
-            //res.end('mot de passe incorrect');
-            res.redirect('/redirects');
+            res.end('mot de passe incorrect');
           }
         });
         }
@@ -138,8 +137,7 @@ router.post('/log', function(req, res) {
       }
       //---------------
     }else{
-      //res.end('Email incorrect');
-      res.redirect('/redirects');
+      res.end('Email incorrect');
     }
   //});
   });
@@ -161,7 +159,7 @@ router.get('/redirects', function(req, res) {
      res.render('/');
      //res.render('/', { sess: session.uniqueID });
   }else{
-     res.redirect('/login');
+    res.end('who are you ?' );
   }
 });
 

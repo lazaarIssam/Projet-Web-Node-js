@@ -138,8 +138,7 @@ router.post('/log', function(req, res) {
       }
       //---------------
     }else{
-      //res.end('Email incorrect');
-      res.redirect('/redirects');
+      res.end('Email incorrect');
     }
   //});
   });

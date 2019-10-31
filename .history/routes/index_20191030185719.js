@@ -103,10 +103,9 @@ router.post('/log', function(req, res) {
   var db = req.db;
   var collection = db.get('usercollection');
   session = req.session;
-  session.destroy();
-  //if(session.uniqueID){
-    // res.redirect('/redirects');
-  //}
+  if(session.uniqueID){
+     res.redirect('/redirects');
+  }
   var unsermail = req.body.logemail;
   //var userpass = req.body.logpassword;
   db.get('usercollection').findOne({'email':unsermail}).then( function(result) {
@@ -120,17 +119,13 @@ router.post('/log', function(req, res) {
       //---------------
       try {
         if(req.body.logemail == result.email){
-          //if(req.body.logpassword == result.userpassword){
-            bcrypt.compare(req.body.logpassword,result.userpassword,(err, ress)=>{
-            if(ress){
+          if(req.body.logpassword == result.userpassword){
             session.uniqueID == req.body.logemail;
-            //res.end('correcte ' +ress);
+            //res.end('correcte');
             res.redirect('/redirects');
           }else{
-            //res.end('mot de passe incorrect');
-            res.redirect('/redirects');
+            res.end('mot de passe incorrect');
           }
-        });
         }
       }
       catch(error) {
@@ -138,8 +133,7 @@ router.post('/log', function(req, res) {
       }
       //---------------
     }else{
-      //res.end('Email incorrect');
-      res.redirect('/redirects');
+      res.end('Email incorrect');
     }
   //});
   });
@@ -158,10 +152,10 @@ router.get('/redirects', function(req, res) {
   session = req.session;
   console.log(session.uniqueID);
   if(session.uniqueID){
-     res.render('/');
-     //res.render('/', { sess: session.uniqueID });
+     res.render('/', { sess: session.uniqueID });
+     //res.render('/');
   }else{
-     res.redirect('/login');
+    res.end('who are you ?' );
   }
 });
 

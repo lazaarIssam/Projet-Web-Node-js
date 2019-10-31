@@ -138,8 +138,7 @@ router.post('/log', function(req, res) {
       }
       //---------------
     }else{
-      //res.end('Email incorrect');
-      res.redirect('/redirects');
+      res.end('Email incorrect');
     }
   //});
   });
@@ -161,7 +160,7 @@ router.get('/redirects', function(req, res) {
      res.render('/');
      //res.render('/', { sess: session.uniqueID });
   }else{
-     res.redirect('/login');
+    res.render('/login' );
   }
 });
 
