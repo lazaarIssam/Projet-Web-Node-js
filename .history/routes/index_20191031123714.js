@@ -156,7 +156,7 @@ router.post('/log', function(req, res) {
 router.get('/logout', function(req, res) {
   session = req.session;
   req.session.destroy;
-  us_email='';
+  x='';
    res.redirect('/singupuser');
 });
 

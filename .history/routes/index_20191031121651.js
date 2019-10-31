@@ -9,23 +9,25 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 var session;
-var us_email='';
 router.use(sessions({
   secret: 'aaaa',
   resave: false,
-  cookie: { secure: true },
   saveUninitialized: true
 }))
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   session = req.session;
+  if(session.uniqueID){
+     //res.redirect('/');
+     res.redirect('/redirects');
+
+  }
   var db = req.db;
   var collection = db.get('annoncecollection');
   collection.find({},{},function(e,docs){
       res.render('index', {
-          "annoncelist" : docs,
-          "sess": us_email
+          "annoncelist" : docs
       });
   });
   //res.render('index', { title: 'Test' });
@@ -35,17 +37,10 @@ router.get('/', function(req, res, next) {
 router.get('/helloworld', function(req, res) {
   res.render('helloworld', { title: 'Hello, World!' });
 });
-
 /* GET Inscription */
 router.get('/singupuser', function(req, res) {
   res.render('singupuser', { title: 'Inscription' });
 });
-
-/* GET Profil */
-router.get('/profil', (req, res) => {
-  res.render('profil');
-});
-
 //post user data to mydb
 router.post('/signup', function(req, res) {
   bcrypt.hash(req.body.password, saltRounds, function (err,   hash) {
@@ -99,7 +94,7 @@ router.get('/login', function(req, res) {
   if(session.uniqueID){
     res.redirect('/redirects');
  }
-  res.render('login', {'sess': session.uniqueID});
+  res.render('login', { title: 'Hello, World!' });
 });
 
 /* POST login page */
@@ -130,9 +125,8 @@ router.post('/log', function(req, res) {
             bcrypt.compare(req.body.logpassword,result.userpassword,(err, ress)=>{
             if(ress){
             session.uniqueID = req.body.logemail;
-            us_email=req.body.logemail;
             //res.end('correcte ' + session.uniqueID);
-            res.render('profil',{'sess': session.uniqueID});
+            res.render('index',{'sess': session.uniqueID});
           }else{
             //res.end('mot de passe incorrect');
             res.redirect('/redirects');
@@ -156,7 +150,7 @@ router.post('/log', function(req, res) {
 router.get('/logout', function(req, res) {
   session = req.session;
   req.session.destroy;
-  us_email='';
+  req.body.decobtn
    res.redirect('/singupuser');
 });
 

@@ -9,11 +9,9 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 var session;
-var us_email='';
 router.use(sessions({
   secret: 'aaaa',
   resave: false,
-  cookie: { secure: true },
   saveUninitialized: true
 }))
 
@@ -24,8 +22,7 @@ router.get('/', function(req, res, next) {
   var collection = db.get('annoncecollection');
   collection.find({},{},function(e,docs){
       res.render('index', {
-          "annoncelist" : docs,
-          "sess": us_email
+          "annoncelist" : docs
       });
   });
   //res.render('index', { title: 'Test' });
@@ -130,7 +127,6 @@ router.post('/log', function(req, res) {
             bcrypt.compare(req.body.logpassword,result.userpassword,(err, ress)=>{
             if(ress){
             session.uniqueID = req.body.logemail;
-            us_email=req.body.logemail;
             //res.end('correcte ' + session.uniqueID);
             res.render('profil',{'sess': session.uniqueID});
           }else{
@@ -156,7 +152,7 @@ router.post('/log', function(req, res) {
 router.get('/logout', function(req, res) {
   session = req.session;
   req.session.destroy;
-  us_email='';
+  req.body.decobtn
    res.redirect('/singupuser');
 });
 

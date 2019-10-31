@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Acceuil </title>
+    <title>Acceuil <%= session.uniqueID %></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <div>
@@ -11,11 +11,11 @@
     </div>
   </head>
   <body>
-    <h1>Annonce List  <%= sess %></h1>
+    <h1>Annonce List</h1>
       <%
         var list = '';
         for (i = 0; i < annoncelist.length; i++) {
-          list += '<div class="card" style="width: 18rem;"><img class="card-img-top" src="#" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+ annoncelist[i].titre +'</h5><p class="card-text">'+ annoncelist[i].desc +'</p><a href="#" class="btn btn-primary">Details</a></div></div> <br>';
+          list += '<div class="card" style="width: 18rem;"><img class="card-img-top" src="/public/images/aaaa.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+ annoncelist[i].titre +'</h5><p class="card-text">'+ annoncelist[i].desc +'</p><a href="#" class="btn btn-primary">Details</a></div></div> <br>';
         }
       %>
       <%- list %>
