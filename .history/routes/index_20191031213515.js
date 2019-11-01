@@ -39,7 +39,6 @@ router.get('/logout', userCont.logout);
 /* get Annonce insert page */
 router.get('/addAnn', annoCont.Annon);
 
-/* Post Annonce insert page */
-router.post('/addAnn', annoCont.insererAnnonce);
+router.get('/addAnn', annoCont.insererAnnonce);
 
 module.exports = router;

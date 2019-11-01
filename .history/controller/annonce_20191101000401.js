@@ -19,7 +19,6 @@ exports.Annon = function(req, res) {
       var description = req.body.description;
       var prix = req.body.prix;
       var date = req.body.dateAv;
-      var user = userCont.usercount;
       //var img = req.file.img;
       var img = "ppppp";
       var collection = db.get('annoncecollection');
@@ -31,7 +30,6 @@ exports.Annon = function(req, res) {
           "desc" : description,
           "prix" : prix,
           "date" : date,
-          "user" : user
           //"photo" : img
       }, function (err, doc) {
           if (err) {

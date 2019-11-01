@@ -31,7 +31,6 @@ exports.Annon = function(req, res) {
           "desc" : description,
           "prix" : prix,
           "date" : date,
-          "user" : user
           //"photo" : img
       }, function (err, doc) {
           if (err) {
