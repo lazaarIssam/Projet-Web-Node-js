@@ -13,9 +13,7 @@ exports.acceuil= function(req, res, next) {
     var collection = db.get('annoncecollection');
     collection.find({},{},function(e,docs){
         listAnn = docs; 
-        res.render('index', { "annoncelist" : docs, "sesID": req.session.id});
+        res.render('index', { "annoncelist" : docs,"sesID": sessionID});
         //res.render('index', { "sess": userCont.us_email});
     });
   }
-  
-  exports.dashboard= function(req, res, next) {res.render('dashboard');}

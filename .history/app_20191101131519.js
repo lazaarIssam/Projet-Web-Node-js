@@ -24,10 +24,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'aaaa',
+  name: 'sid',
   resave: false,
   cookie: { secure: true, sameSite: true },
   saveUninitialized: false}));
-
 // Make our db accessible to our router
 app.use(function(req,res,next){
   req.db = db;

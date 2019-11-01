@@ -17,5 +17,3 @@ exports.acceuil= function(req, res, next) {
         //res.render('index', { "sess": userCont.us_email});
     });
   }
-  
-  exports.dashboard= function(req, res, next) {res.render('dashboard');}

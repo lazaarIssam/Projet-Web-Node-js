@@ -12,7 +12,7 @@ var indexCont = require('../controller/index');
 var us_email='';
 var sessionsession;
 
-app.use(session({
+app.use(sessions({
     secret: 'aaaa',
     name: 'sid',
     resave: false,
@@ -84,13 +84,10 @@ app.use(session({
             //if(req.body.logpassword == result.userpassword){
               bcrypt.compare(req.body.logpassword,result.userpassword,(err, ress)=>{
               if(ress){
+                sessionsession = result._id;
               us_email=req.body.logemail;
               //res.end('correcte ' + session.uniqueID);
-              if(result.typecompte =='agent'){
-              //res.render('profil',{"sess": us_email,"sesid": req.session.id});
-              res.render('dashboard',{"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});
-              }
-              res.render('profil',{"sess": us_email,"sesid": req.session.id});
+              res.render('profil',{"sess": us_email,"sesid": session});
             }else{
               //res.end('mot de passe incorrect');
               res.redirect('/login');
@@ -111,9 +108,7 @@ app.use(session({
   }
   /* get logout page */
   exports.logout = function(req, res) {
-    sion = req.session;
+    session = req.session;
     us_email='';
-    req.sion.destroy();
-     //res.redirect('/');
-     res.send('logged out !');
+     res.redirect('/');
   }

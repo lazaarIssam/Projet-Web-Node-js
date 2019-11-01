@@ -18,4 +18,13 @@ exports.acceuil= function(req, res, next) {
     });
   }
   
-  exports.dashboard= function(req, res, next) {res.render('dashboard');}
+  exports.dashboard= function(req, res, next) {
+    //session = req.session;
+    var db = req.db;
+    var collection = db.get('annoncecollection');
+    collection.find({},{},function(e,docs){
+        listAnn = docs; 
+        res.render('index', { "annoncelist" : docs, "sesID": req.session.id});
+        //res.render('index', { "sess": userCont.us_email});
+    });
+  }

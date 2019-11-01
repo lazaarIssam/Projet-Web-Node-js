@@ -1,7 +1,7 @@
 var express = require('express');
 var bcrypt = require('bcrypt');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+var sessions = require('express-session');
 const saltRounds = 10;
 const app = express();
 app.use(bodyParser.json());
@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 var indexCont = require('../controller/index'); 
 
 var us_email='';
-var sessionsession;
+var session;
 
-app.use(session({
+app.use(sessions({
     secret: 'aaaa',
     name: 'sid',
     resave: false,
@@ -67,6 +67,7 @@ app.use(session({
 
 /* GET login page */
   exports.loginpage = function(req, res) {
+    session = req.session;
     res.render('login', {'sess': us_email});
   }
 
@@ -74,7 +75,8 @@ app.use(session({
   exports.login = function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
-    sessionsession = req.session;
+    session = req.session;
+    //session.destroy();
     var unsermail = req.body.logemail;
     db.get('usercollection').findOne({'email':unsermail}).then( function(result) {
       if(result){
@@ -84,13 +86,10 @@ app.use(session({
             //if(req.body.logpassword == result.userpassword){
               bcrypt.compare(req.body.logpassword,result.userpassword,(err, ress)=>{
               if(ress){
+              //session.uniqueID = result._id;
               us_email=req.body.logemail;
               //res.end('correcte ' + session.uniqueID);
-              if(result.typecompte =='agent'){
-              //res.render('profil',{"sess": us_email,"sesid": req.session.id});
-              res.render('dashboard',{"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});
-              }
-              res.render('profil',{"sess": us_email,"sesid": req.session.id});
+              res.render('profil',{"sess": us_email});
             }else{
               //res.end('mot de passe incorrect');
               res.redirect('/login');
@@ -111,9 +110,7 @@ app.use(session({
   }
   /* get logout page */
   exports.logout = function(req, res) {
-    sion = req.session;
+    session = req.session;
     us_email='';
-    req.sion.destroy();
-     //res.redirect('/');
-     res.send('logged out !');
+     res.redirect('/');
   }

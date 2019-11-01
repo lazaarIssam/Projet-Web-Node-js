@@ -43,6 +43,6 @@ router.get('/addAnn', annoCont.Annon);
 router.post('/addAnn', annoCont.insererAnnonce);
 
 /* get dashboard  page */
-router.get('/dashboard', indexCont.dashboard);
+router.get('/dashboard', annoCont.Annon);
 
 module.exports = router;

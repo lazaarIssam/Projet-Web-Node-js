@@ -22,11 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  secret: 'aaaa',
-  resave: false,
-  cookie: { secure: true, sameSite: true },
-  saveUninitialized: false}));
+app.use(express.session({secret: 'aaaa',saveUninitialized: false, resave: false,cookie: { secure: true, sameSite: true }}));
 
 // Make our db accessible to our router
 app.use(function(req,res,next){

@@ -86,10 +86,7 @@ app.use(session({
               if(ress){
               us_email=req.body.logemail;
               //res.end('correcte ' + session.uniqueID);
-              if(result.typecompte =='agent'){
-              //res.render('profil',{"sess": us_email,"sesid": req.session.id});
-              res.render('dashboard',{"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});
-              }
+              if(result.typecompte =='agent')
               res.render('profil',{"sess": us_email,"sesid": req.session.id});
             }else{
               //res.end('mot de passe incorrect');

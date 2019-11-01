@@ -86,10 +86,6 @@ app.use(session({
               if(ress){
               us_email=req.body.logemail;
               //res.end('correcte ' + session.uniqueID);
-              if(result.typecompte =='agent'){
-              //res.render('profil',{"sess": us_email,"sesid": req.session.id});
-              res.render('dashboard',{"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});
-              }
               res.render('profil',{"sess": us_email,"sesid": req.session.id});
             }else{
               //res.end('mot de passe incorrect');
@@ -111,9 +107,9 @@ app.use(session({
   }
   /* get logout page */
   exports.logout = function(req, res) {
-    sion = req.session;
+    session = req.session;
     us_email='';
-    req.sion.destroy();
+    req.session.destroy();
      //res.redirect('/');
      res.send('logged out !');
   }
