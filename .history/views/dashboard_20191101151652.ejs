@@ -7,13 +7,11 @@
     <h1>Id d'utilisateur:  <%= u_id %> </h1>
     <ul>
       <%= u_name %> <%= u_email %> <%= u_typecompte %>
-      <form method="GET" action="/addAnn">
             <input type="hidden" value="<%= u_id %>" name="us_id">
             <input type="hidden" value="<%= u_name %>" name="us_name">
             <input type="hidden" value="<%= u_email %>" name="us_email">
-            <input type="hidden" value="<%= u_typecompte %>" name="us_typecompte"> 
-            <button type="submit">crée un post</button>
-      </form>
+            <input type="hidden" value="<%= u_typecompte %>" name="us_typecompte">
+            <button type="button" href="/addAnn" class="btn btn-outline-success" >crée un post</button>
     </ul>
   </body>
 </html>

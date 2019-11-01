@@ -19,5 +19,6 @@ exports.acceuil= function(req, res, next) {
   }
   
   exports.dashboard= function(req, res, next) {
-      res.render('dashboard')
+      //res.render('dashboard')
+      res.send(req.session.id);
       ;}

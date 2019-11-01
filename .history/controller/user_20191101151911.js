@@ -87,7 +87,8 @@ app.use(session({
               us_email=req.body.logemail;
               //res.end('correcte ' + session.uniqueID);
               if(result.typecompte =='agent'){
-                res.render('dashboard',{"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});
+              //res.render('profil',{"sess": us_email,"sesid": req.session.id});
+              // res.render('dashboard',{"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});
               }
               res.render('profil',{"sess": us_email,"sesid": req.session.id});
             }else{
