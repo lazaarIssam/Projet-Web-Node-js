@@ -27,7 +27,7 @@ app.use(session({
   resave: false,
   cookie: { secure: true, sameSite: true },
   saveUninitialized: false}));
-app.use(express.static(__dirname + '/public'));  
+app.use('/static', express.static(__dirname + '/public'));  
 
 // Make our db accessible to our router
 app.use(function(req,res,next){
