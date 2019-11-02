@@ -40,9 +40,8 @@
               <td><%= ann.date %></td>
               <td><%= ann.desc %></td>
               <td>
-                <form method="POST" action="/updatepage">
+                <form method="POST" action="updatepage">
                   <input type="hidden" name="annonceid" value="<%= ann._id %>">
-                  <button type="submit">Modifier</button>
                 </form>
               </td>
               <% }); %>

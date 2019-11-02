@@ -31,7 +31,7 @@
           </tr>
           <% listannonceuser.forEach(function (ann) { %> 
           <tr>
-              <td><%= ann.photo %></td>
+              <td><%= ann._id %></td>
               <td><%= ann.titre %></td>
               <td><%= ann.typedebien %></td>
               <td><%= ann.statusPub %></td>
@@ -40,9 +40,8 @@
               <td><%= ann.date %></td>
               <td><%= ann.desc %></td>
               <td>
-                <form method="POST" action="/updatepage">
-                  <input type="hidden" name="annonceid" value="<%= ann._id %>">
-                  <button type="submit">Modifier</button>
+                <form>
+                  <input type="hidden" name="annonceid" value="">
                 </form>
               </td>
               <% }); %>

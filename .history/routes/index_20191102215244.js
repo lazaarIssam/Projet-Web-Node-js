@@ -62,9 +62,9 @@ router.post('/msgpage', questionCont.questionpage);
 router.post('/envoyermsg', questionCont.questionAnnonce);
 
 /* Annonce Detail page */
-router.post('/messagerieCl', questionCont.messagerieClient); 
+router.post('/messagerieCl', questionCont.messagerieClient); updatepage
 
 /* Annonce update page */
-router.post('/updatepage', annoCont.updatep);
+router.post('/messagerieCl', questionCont.messagerieClient);
 
 module.exports = router;

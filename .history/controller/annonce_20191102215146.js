@@ -85,7 +85,9 @@ exports.detailAnnonce= function(req, res) {
 }
 
 /* update page */
-exports.updatep= function(req, res) {
+exports.updatepage= function(req, res) {
   var db = req.db;
-  res.send('value: ' + req.body.annonceid);
+  db.get('annoncecollection').find({"_id":req.body.idannonce},function(e, docs){
+    res.render('details',{"result": docs});
+  });
 }

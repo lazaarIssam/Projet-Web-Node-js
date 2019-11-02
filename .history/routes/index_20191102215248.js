@@ -65,6 +65,6 @@ router.post('/envoyermsg', questionCont.questionAnnonce);
 router.post('/messagerieCl', questionCont.messagerieClient); 
 
 /* Annonce update page */
-router.post('/updatepage', annoCont.updatep);
+router.post('/messagerieCl', questionCont.updatepage);
 
 module.exports = router;

@@ -95,9 +95,8 @@ app.use(session({
               //res.render('profil',{"sess": us_email,"sesid": req.session.id});
               //res.render('dashboard');
               //collectionannonce.findOne({'agent.us_id': result._id}).then( function(item){
-                //collectionannonce.find({'user.us_id': result._id},function(err,item){
-                  //collectionannonce.find({where: {'typedebien': 'location'}},{},function(err,item){
-                    collectionannonce.find({},{},function(err,item){
+                //collectionannonce.find({'user.us_id': result._id}).toArray(function(err,item){
+                  collectionannonce.find({where: {'user.us_id': objectId(resultid)}},{},function(err,item){
                   console.log('item123: '+ item);
                   if (err) throw err;
                 //db.get('annoncecollection').find({},function(e, item){

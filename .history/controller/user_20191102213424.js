@@ -90,15 +90,13 @@ app.use(session({
               us_email=req.body.logemail;
               iduser=result._id;
               req.session.save();
-              var resultid= result._id;
               if(result.typecompte =='agent'){
               //res.render('profil',{"sess": us_email,"sesid": req.session.id});
               //res.render('dashboard');
               //collectionannonce.findOne({'agent.us_id': result._id}).then( function(item){
-                //collectionannonce.find({'user.us_id': result._id},function(err,item){
-                  //collectionannonce.find({where: {'typedebien': 'location'}},{},function(err,item){
-                    collectionannonce.find({},{},function(err,item){
-                  console.log('item123: '+ item);
+                //collectionannonce.find({'user.us_id': result._id}).toArray(function(err,item){
+                  collectionannonce.find({'user.us_id': objectId(result._id)},{},function(err,item){
+                  console.log('item123: '+item.title);
                   if (err) throw err;
                 //db.get('annoncecollection').find({},function(e, item){
                 res.render('dashboard',{"listannonceuser": item,"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});

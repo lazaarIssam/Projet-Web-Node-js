@@ -3,7 +3,6 @@ var bcrypt = require('bcrypt');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongo = require('mongodb');
-var objectId = require('mongodb').ObjectID;
 const saltRounds = 10;
 const app = express();
 app.use(bodyParser.json());
@@ -90,19 +89,20 @@ app.use(session({
               us_email=req.body.logemail;
               iduser=result._id;
               req.session.save();
-              var resultid= result._id;
               if(result.typecompte =='agent'){
               //res.render('profil',{"sess": us_email,"sesid": req.session.id});
               //res.render('dashboard');
               //collectionannonce.findOne({'agent.us_id': result._id}).then( function(item){
-                //collectionannonce.find({'user.us_id': result._id},function(err,item){
-                  //collectionannonce.find({where: {'typedebien': 'location'}},{},function(err,item){
-                    collectionannonce.find({},{},function(err,item){
-                  console.log('item123: '+ item);
-                  if (err) throw err;
+                collectionannonce.findOne(query['user.us_id':result._id],function(err,item){
+                  console.log('item: '+item.bodyParser);
+                  if(item){
                 //db.get('annoncecollection').find({},function(e, item){
+                  console.log('item : ' + item );
                 res.render('dashboard',{"listannonceuser": item,"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});
                 req.db.close();
+                  }else {
+                    res.send('erreur');
+                  }
               });
               //res.render('dashboard',{"u_id": result._id, "u_name": result.username, "u_email": result.email, "u_typecompte": result.typecompte});
               }if(result.typecompte =='client'){

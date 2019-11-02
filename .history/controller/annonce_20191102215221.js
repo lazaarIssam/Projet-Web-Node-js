@@ -85,7 +85,7 @@ exports.detailAnnonce= function(req, res) {
 }
 
 /* update page */
-exports.updatep= function(req, res) {
+exports.updatepage= function(req, res) {
   var db = req.db;
-  res.send('value: ' + req.body.annonceid);
+  res.send('value: ' req.body.annonceid);
 }
