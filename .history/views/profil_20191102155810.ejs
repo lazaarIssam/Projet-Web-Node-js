@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+    <h1>Profil : <%= sess %> </h1>
+    <ul>
+      <%= sesid %> || <%= sesname %> 
+    </ul>
+    <h1>annonce</h1><br>
+    <% result.forEach(function (ann) { %> 
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="/images/aaaa.jpg" width="300" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title"><%= ann._id %></h4>
+          <h5 class="card-title"><%= ann.titre %></h5>
+          <p class="card-text"><%= ann.user.us_id %></p>
+          <form method="POST">
+            <input type="hidden" name="iduser" value="<%= ann.user.us_id %>">
+            <input type="hidden" name="idannonce" value="<%= ann._id %>">
+            <button class="btn btn-primary" type="submit">Details</button>
+          </form>
+          <a href="#" role="button" class="btn btn-primary">Envoyer un message</a>
+      </div> 
+    </div><br>
+      <% }); %>
+  </ul>
+  </body>
+</html>

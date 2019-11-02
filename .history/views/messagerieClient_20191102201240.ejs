@@ -1,0 +1,18 @@
+<h1><%= result %></h1>
+<table class="table table-bordered" name="tableName">
+        <tr>
+            <th>Id d'annonce</th>
+            <th>Id d'utilisateur</th>
+            <th>Id d'agent</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        <% result.forEach(function (ann) { %> 
+        <tr>
+            <td><%= ann.annonceid %></td>
+            <td><%= ann.userid %></td>
+            <td><%= ann.agentid %></td>
+            <td><%= ann.question %></td>
+            <% }); %>
+        </tr>
+    </table>

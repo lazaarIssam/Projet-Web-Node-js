@@ -1,0 +1,9 @@
+<h1><%= userid %> | et | <%= annonceid %> : agent : <%= idagent %> </h1>
+
+<form method="POST" action="envoyermsg">
+    <input type="hidden" name="userid" value="<%= userid %>" >
+    <input type="hidden" name="idagent" value="<%= idagent %>" >
+    <input type="hidden" name="annonceid" value="<%= annonceid %>">
+    <input type="test" name="description">
+    <button type="submit">Envoyer</button> 
+</form>

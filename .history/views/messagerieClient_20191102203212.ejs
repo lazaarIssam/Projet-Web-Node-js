@@ -1,0 +1,12 @@
+<h1><%= clientid %></h1>
+
+    <ul>
+            <%
+              var list = '';
+              for (i = 0; i < resu.length; i++) {
+                list += '<li>' + resu[i].annonceid +'    '+ resu[i].question + '</a></li>';
+              }
+            %>
+            <%- list %>
+          </ul>
+        </body>    

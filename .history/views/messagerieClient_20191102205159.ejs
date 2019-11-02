@@ -1,0 +1,29 @@
+<h1><%= clientid %></h1>
+<table class="table table-bordered" name="tableName">
+        <tr>
+            <th>Id d'annonce</th>
+            <th>Id d'utilisateur</th>
+            <th>Id d'agent</th>
+            <th>Message</th>
+            <th></th>
+        </tr>
+        <% result.forEach(function (result) { %> 
+        <tr>
+            <td><%= result.annonceid %></td>
+            <td><%= result.userid %></td>
+            <td><%= result.agentid %></td>
+            <td><%= result.question %></td>
+            <% }); %>
+        </tr>
+    </table>
+
+    <% result.forEach(function (ann) { %> 
+        <div class="card" style="width: 20rem;">
+          <img class="card-img-top" src="aaaa.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= ann.titre %></h5>
+            <p class="card-text"><%= ann.desc %></p>
+            <a href="#" class="btn btn-primary">Details</a>
+        </div> 
+      </div><br>
+        <% }); %>

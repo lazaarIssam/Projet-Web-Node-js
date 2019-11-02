@@ -1,0 +1,11 @@
+<h1><%= clientid %></h1>
+
+
+    <% result.forEach(function (ann) { %> 
+        <div class="card" style="width: 20rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= ann.titagentidre %></h5>
+            <p class="card-text"><%= ann.question %></p>
+        </div> 
+      </div><br>
+        <% }); %>
