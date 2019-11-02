@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+    <h1>Id d'utilisateur:  <%= u_id %> </h1>
+    <ul>
+      <%= u_name %> <%= u_email %> <%= u_typecompte %>
+      <form method="POST" action="/addAnnnP">
+            <input type="hidden" value="<%= u_id %>" name="us_id">
+            <input type="hidden" value="<%= u_name %>" name="us_name">
+            <input type="hidden" value="<%= u_email %>" name="us_email">
+            <input type="hidden" value="<%= u_typecompte %>" name="us_typecompte"> 
+            <button type="submit">crée un post</button>
+      </form>
+      <h1>Mes annonces:</h1>
+      <% listannonceuser.forEach(function (ann) { %> 
+        <div class="card" style="width: 20rem;">
+          <img class="card-img-top" src="aaaa.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= ann.titre %></h5>
+            <p class="card-text"><%= ann.desc %></p>
+            <a href="#" class="btn btn-primary">Details</a>
+        </div> 
+      </div><br>
+        <% }); %>
+      
+    </ul>
+  </body>
+</html>
