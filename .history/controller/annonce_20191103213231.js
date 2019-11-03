@@ -79,8 +79,8 @@ exports.annonceuser= function(req, res) {
 /* annonce annonce */
 exports.detailAnnonce= function(req, res) {
   var db = req.db;
-  var idannonce = req.params.idannonce;
-  db.get('annoncecollection').find({"_id":idannonce},function(e, docs){
+  var idannonce = req.params.idannonce
+  db.get('annoncecollection').find({"_id":req.body.idannonce},function(e, docs){
     res.render('details',{"result": docs});
   });
 }

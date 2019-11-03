@@ -1,8 +1,3 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var ObjectID = require('mongodb').ObjectID;
-const app = express();
-
 /* POST Question */  
 exports.questionAnnonce = function(req, res) {
     var db = req.db;
@@ -33,17 +28,9 @@ exports.questionAnnonce = function(req, res) {
 
 /* redirect page d'envoie msg */
 exports.questionpage = function(req, res) {
-    var db = req.db;
     var idannonce = req.params.idannonce;
-    var idclient = req.params.idclient;
-    console.log('id annonce: '+ idannonce);
-    console.log(' client : '+idclient);
-    db.collection('annoncecollection').findOne({"_id":idannonce},function(err,annonce){
-        db.collection('usercollection').findOne({"_id":idclient},function(err,client){
-            res.render('question',{"annonce": annonce,"client": client});
-            //res.send('user: '+ client.username+' annonce: '+annonce.titre);
-        })
-    })
+    console.log('id annonce: '+ req.body.idannonce);
+  res.render('question',{"userid": req.body.iduser,"annonceid": req.body.idannonce,"idagent": req.body.idagent,"emailclient":req.body.emailclient});
 }
 
 /* redirect page msg */

@@ -37,11 +37,9 @@ exports.questionpage = function(req, res) {
     var idannonce = req.params.idannonce;
     var idclient = req.params.idclient;
     console.log('id annonce: '+ idannonce);
-    console.log(' client : '+idclient);
     db.collection('annoncecollection').findOne({"_id":idannonce},function(err,annonce){
-        db.collection('usercollection').findOne({"_id":idclient},function(err,client){
-            res.render('question',{"annonce": annonce,"client": client});
-            //res.send('user: '+ client.username+' annonce: '+annonce.titre);
+        db.collection('usercollection').findOne({"_id":idclient},function(err,userr){
+            res.send('user: '+ userr.username+' annonce: '+annonce.titre);
         })
     })
 }

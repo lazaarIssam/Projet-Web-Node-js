@@ -56,7 +56,7 @@ router.get('/anonUser', annoCont.annonceuser);
 router.get('/detailsAnnonce/:idannonce', annoCont.detailAnnonce);
 
 /*  Annonce Detail page */
-router.get('/msgpage/:idannonce/:idclient', questionCont.questionpage);
+router.post('/msgpage', questionCont.questionpage);
 
 /* Annonce Detail page */
 router.post('/envoyermsg', questionCont.questionAnnonce);

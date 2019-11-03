@@ -7,11 +7,16 @@
   </head>
   <body>
         <div class="container">
+
                 <div class="row">
-                    <div class="col-xl-8 offset-xl-2 py-5">
-                        <h1> <strong> <%= annonce.titre %> </strong></h1>
         
-                        <p class="lead"><%= annonce.desc %></p>
+                    <div class="col-xl-8 offset-xl-2 py-5">
+        
+                        <h1>Contact form Tutorial from
+                            <a href="http://bootstrapious.com">Bootstrapious.com</a>
+                        </h1>
+        
+                        <p class="lead">This is a demo for our tutorial dedicated to crafting working Bootstrap contact form with PHP and AJAX background.</p>
         
         
                         <form id="contact-form" method="post" action="contact.php" role="form">
@@ -23,7 +28,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="form_name">Firstname </label>
+                                            <label for="form_name">Firstname *</label>
                                             <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
                                             <div class="help-block with-errors"></div>
                                         </div>

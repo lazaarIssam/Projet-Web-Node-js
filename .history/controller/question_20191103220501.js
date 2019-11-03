@@ -41,7 +41,7 @@ exports.questionpage = function(req, res) {
     db.collection('annoncecollection').findOne({"_id":idannonce},function(err,annonce){
         db.collection('usercollection').findOne({"_id":idclient},function(err,client){
             res.render('question',{"annonce": annonce,"client": client});
-            //res.send('user: '+ client.username+' annonce: '+annonce.titre);
+            //res.send('user: '+ userr.username+' annonce: '+annonce.titre);
         })
     })
 }

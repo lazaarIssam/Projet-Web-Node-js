@@ -53,10 +53,10 @@ router.post('/insertPost', annoCont.insererAnnonce);
 router.get('/anonUser', annoCont.annonceuser);
 
 /*  Annonce Detail page */
-router.get('/detailsAnnonce/:idannonce', annoCont.detailAnnonce);
+router.post('/detailsAnnonce/:', annoCont.detailAnnonce);
 
 /*  Annonce Detail page */
-router.get('/msgpage/:idannonce/:idclient', questionCont.questionpage);
+router.post('/msgpage', questionCont.questionpage);
 
 /* Annonce Detail page */
 router.post('/envoyermsg', questionCont.questionAnnonce);

@@ -22,7 +22,7 @@
           <h5 class="card-title"><%= ann.titre %></h5>
           <p class="card-text"><%= ann.user.us_id %></p>
           <a href="/detailsAnnonce/<%= ann._id %>" role="button" class="btn btn-outline-success">Details</a>
-          <a href="/msgpage/<%= ann._id %>/<%= iduser %>" role="button" class="btn btn-primary">Envoyer un message</a>
+          <a href="/msgpage/<%= ann._id %>" role="button" class="btn btn-primary">Envoyer un message</a>
           <!-- <form method="POST" action="/msgpage">
             <input type="hidden" name="idannonce" value="<%= ann._id %>">
             <input type="hidden" name="idagent" value="<%= ann.user.us_id %>">
