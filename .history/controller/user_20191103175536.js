@@ -99,8 +99,7 @@ app.use(session({
               //collectionannonce.findOne({'agent.us_id': result._id}).then( function(item){
                 //collectionannonce.find({'user.us_id': result._id},function(err,item){
                   //collectionannonce.find({where: {'typedebien': 'location'}},{},function(err,item){
-                    //collectionannonce.find({"user.us_email": result.email},function(err,item){
-                      collectionannonce.find({"user.us_id": result._id.toString()},function(err,item){        
+                    collectionannonce.find({"user.us_id": resultid},function(err,item){
                   console.log('item123: '+ item);
                   if (err) throw err;
                 //db.get('annoncecollection').find({},function(e, item){

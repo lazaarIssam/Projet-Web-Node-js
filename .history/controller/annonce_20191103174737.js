@@ -113,7 +113,7 @@ exports.updateann= function(req, res) {
                       };
   db.get('annoncecollection').update({"_id":req.body.anoid}, newvalues,function(err, data) {
     if (err) throw err; 
-    res.send('bien modifier !')
+    res.render(path);
     db.close();
   });
 }

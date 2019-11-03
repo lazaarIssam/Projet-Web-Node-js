@@ -100,8 +100,20 @@ exports.updatep= function(req, res) {
 /* update page */
 exports.updateann= function(req, res) {
   var db = req.db;
+  var item = {
+    titre: req.body.title,
+    typedebien: req.body.typedebien,
+    statusPub: req.body.statusPub,
+    statusTransaction: req.body.statusTransaction,
+    desc: req.body.statusTransaction,
+    prix: req.body.prix,
+    date: req.body.date,
+    photo: 'modifier'
+  };
   console.log('Item id: '+req.body.anoid);
-  var newvalues = { $set: {titre: req.body.titre,
+  var newObjectId = new ObjectID(req.params.anoid)
+  var myid = { _id: newObjectId };
+  var newvalues = { $set: {titre: req.body.title,
                           typedebien: req.body.typedebien,
                           statusPub: req.body.statusPub,
                           statusTransaction: req.body.statusTransaction,
@@ -111,9 +123,10 @@ exports.updateann= function(req, res) {
                           photo: 'modifier' 
                         }
                       };
-  db.get('annoncecollection').update({"_id":req.body.anoid}, newvalues,function(err, data) {
+  db.get('annoncecollection').updateOne(myid, newvalues,function(err, data) {
     if (err) throw err; 
-    res.send('bien modifier !')
+    console.log('data: '+data.titre);
+    res.send('data: '+data);
     db.close();
   });
 }

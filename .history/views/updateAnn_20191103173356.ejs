@@ -12,7 +12,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <!-- Start form -->
                     <h1><%= annonce._id %></h1>
-                                  <form method="post"  action="/updateannonce">
+                                  <form id="updateann" name="updateann" method="post"  action="/updateannonce">
                                     <input type="hidden" name="anoid" value="<%= annonce._id %>">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Titre</label>
@@ -29,7 +29,7 @@
                                                 <label >Status de la publication</label>
                                                 <select class="form-control form-control-sm" name="statusPub" value="<%= annonce.statusPub %>" id="statusPub">
                                                   <option type="text" id="publie" value="publie">Publier</option>
-                                                  <option type="text" id="non publie" value="nonpublie">Non publier</option>
+                                                  <option type="text" id="nonpublie" value="nonpublie">Non publier</option>
                                                 </select>
                                               </div>
                                               <div class="form-group">
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="form-group">
                                               <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                                              <input name ="date"class="form-control" type="date" value="<%= annonce.date %>" id="example-date-input">
+                                              <input name ="dateAv"class="form-control" type="date" value="<%= annonce.date %>" id="example-date-input">
                                           </div>
 
                                           <div class="input-group mb-3">
