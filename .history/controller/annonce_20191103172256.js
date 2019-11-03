@@ -159,7 +159,7 @@ exports.updateann= function(req, res) {
             res.send(err);
         }
         else {
-            res.send('data: '+data.titre);
+            res.send('data: '+data.json);
         }
   });
 }

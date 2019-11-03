@@ -68,6 +68,6 @@ router.post('/messagerieCl', questionCont.messagerieClient);
 router.get('/updatepage/:id', annoCont.updatep);
 
 /* Annonce update annonce */
-router.post('/updateannonce', annoCont.updateann);
+router.get('/updateannonce', annoCont.updateann);
 
 module.exports = router;

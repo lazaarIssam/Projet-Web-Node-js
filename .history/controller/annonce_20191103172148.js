@@ -146,20 +146,20 @@ exports.updateann= function(req, res) {
   // });
   //-----------------------------------------------
   db.get('annoncecollection').update({_id: newObjectId}, {$set:{
-          titre: req.body.title,
-          typedebien:  req.body.typedebien,
-          statusPub: req.body.statusPub,
-          statusTransaction: req.body.statusTransaction,
-          desc: req.body.statusTransaction,
-          prix: req.body.prix,
-          date: req.body.date,
-          photo: 'modifier'
-    }}, function(err, data) {
-        if (err) {
-            res.send(err);
-        }
-        else {
-            res.send('data: '+data.titre);
-        }
-  });
+        titre: req.body.title,
+        typedebien:  req.body.typedebien,
+        statusPub: req.body.statusPub,
+        statusTransaction: req.body.statusTransaction,
+        desc: req.body.statusTransaction,
+        prix: req.body.prix,
+        date: req.body.date,
+        photo: 'modifier'
+}}, function(err, data) {
+    if (err) {
+        res.send(err);
+    }
+    else {
+        res.json({message: 'Classified updated!'});
+    }
+});
 }

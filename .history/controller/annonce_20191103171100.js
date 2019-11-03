@@ -117,49 +117,20 @@ exports.updateann= function(req, res) {
   //   res.send('Item updated');
   //   db.close();
   // });
-  //-------------------------------------------
-  // db.get('annoncecollection').findOne({"_id": newObjectId},function(err,data){
-  //   if(err){
-  //     res.send(err);
-  //   }else{
-  //     if(data){
-  //       data.titre =req.body.title,
-  //       data.typedebien = req.body.typedebien,
-  //       data.statusPub = req.body.statusPub,
-  //       data.statusTransaction= req.body.statusTransaction,
-  //       data.desc = req.body.statusTransaction,
-  //       data.prix = req.body.prix,
-  //       data.date = req.body.date,
-  //       data.photo = 'modifier'
-  //       data.save(function(err){
-  //         if (err) {
-  //           res.send(err);
-  //       }
-  //       else {
-  //           res.json({message: 'Classified updated!'});
-  //       }
-  //       });
-  //     }else {
-  //       res.json({message:'No data found'});
-  //   }
-  // }
-  // });
-  //-----------------------------------------------
-  db.get('annoncecollection').update({_id: newObjectId}, {$set:{
-          titre: req.body.title,
-          typedebien:  req.body.typedebien,
-          statusPub: req.body.statusPub,
-          statusTransaction: req.body.statusTransaction,
-          desc: req.body.statusTransaction,
-          prix: req.body.prix,
-          date: req.body.date,
-          photo: 'modifier'
-    }}, function(err, data) {
-        if (err) {
-            res.send(err);
-        }
-        else {
-            res.send('data: '+data.titre);
-        }
+  db.get('annoncecollection').findById({"_id": newObjectId},function(err,data){
+    if(err){
+      res.send(err);
+    }else{
+      if(data){
+        data.titre =req.body.title,
+        data.typedebien = req.body.typedebien,
+        data.statusPub = req.body.statusPub,
+        data.statusTransaction= req.body.statusTransaction,
+        data.desc = req.body.statusTransaction,
+        data.prix = req.body.prix,
+        data.date = req.body.date,
+        data.photo = 'modifier'
+      }
+    }
   });
 }
