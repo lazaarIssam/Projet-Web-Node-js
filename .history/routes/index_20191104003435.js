@@ -74,6 +74,6 @@ router.post('/updateannonce', annoCont.updateann);
 router.get('/deleteannonce/:idanno/:idus', annoCont.deleteann);
 
 /* Voir l'annonce */
-router.get('/msgan/:idanno', questionCont.msgannonce);
+router.get('/msgannonce/:idanno', annoCont.deleteann);
 
 module.exports = router;

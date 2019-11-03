@@ -69,10 +69,7 @@ exports.messagerieClient = function(req, res) {
 /* voir l'annonce */
 exports.msgannonce = function(req,res){
     var db = req.db;
-    var idannonce = req.params.idanno;
-    db.collection('annoncecollection').findOne({"_id":idannonce},function(err,annonce){
-        res.render('details',{"result": annonce});
-    });
+    var idclient = req.params.idclient;
 }
 
 

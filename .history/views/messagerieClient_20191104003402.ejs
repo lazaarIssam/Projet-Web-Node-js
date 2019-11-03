@@ -6,10 +6,10 @@
         </tr>
         <% result.forEach(function (result) { %> 
         <tr>
-            <td><%= result.objetmsg %></td>
+            <td><%= result.objet_msg %></td>
             <td><%= result.question %></td>
             <td>
-                    <a href="/msgan/<%= result.annonce_id %>" role="button">Voir l'annonce</a>
+                    <a href="/msgannonce/<%= result.annonce_id %>" role="button">Voir l'annonce</a>
             </td>
             <% }); %>
         </tr>
