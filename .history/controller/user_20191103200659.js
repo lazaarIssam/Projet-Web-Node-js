@@ -136,5 +136,5 @@ app.use(session({
   /* get logout page */
   exports.logout = function(req, res) {
     req.session.destroy();
-    res.redirect('/');
+     res.redirect('/');
   }

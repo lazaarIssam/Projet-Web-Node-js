@@ -124,6 +124,7 @@ exports.deleteann= function(req, res) {
   console.log('delete item id: ' +newObjectId);
   db.collection('annoncecollection').remove({"_id":newObjectId},function(err,data){
     if (err) throw err;
+    //res.send('ici : '+userid);
     db.collection('annoncecollection').find({"user.us_id":userid},function(err,annonce){
       db.collection('usercollection').findOne({"_id":userid},function(err,userr){
         res.render('dashboard',{"listannonceuser": annonce,"u_id": userr._id, "u_name": userr.username, "u_email": userr.email, "u_typecompte": userr.typecompte});
