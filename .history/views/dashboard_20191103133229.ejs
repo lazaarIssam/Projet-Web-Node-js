@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+    <h1>Id d'utilisateur:  <%= u_id %> </h1>
+    <ul>
+      <%= u_name %> <%= u_email %> <%= u_typecompte %>
+      <form method="POST" action="/addAnnnP">
+            <input type="hidden" value="<%= u_id %>" name="us_id">
+            <input type="hidden" value="<%= u_name %>" name="us_name">
+            <input type="hidden" value="<%= u_email %>" name="us_email">
+            <input type="hidden" value="<%= u_typecompte %>" name="us_typecompte"> 
+            <button type="submit">crée un post</button>
+      </form>
+      <h1>Mes annonces:</h1>
+    <!-- ----------------------------------------------------------- -->
+      <table class="table table-bordered" name="tableName">
+          <tr>
+              <th>Photo</th>
+              <th>Titre</th>
+              <th>Typpe de bien</th>
+              <th>status de publiction</th>
+              <th>status de transaction</th>
+              <th>prix</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Action</th>
+              <th></th>
+          </tr>
+          <% listannonceuser.forEach(function (ann) { %> 
+          <tr>
+              <td><%= ann.photo %></td>
+              <td><%= ann.titre %></td>
+              <td><%= ann.typedebien %></td>
+              <td><%= ann.statusPub %></td>
+              <td><%= ann.statusTransaction %></td>
+              <td><%= ann.prix %></td>
+              <td><%= ann.date %></td>
+              <td><%= ann.desc %></td>
+              <td>
+                <!-- <input type="hidden" name="annonceid" value="<%= ann._id %>"> -->
+                  <a href="/updatepage/:<%= ann._id %>" role="button">Modifier</a>
+              </td>
+              <% }); %>
+          </tr>
+      </table>
+    <!-- ----------------------------------------------------------- -->
+  </body>
+</html>
