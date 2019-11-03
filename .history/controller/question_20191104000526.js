@@ -7,31 +7,27 @@ const app = express();
 exports.questionAnnonce = function(req, res) {
     var db = req.db;
     var clientid = req.body.clientid;
-    var annonceid = req.body.annonceid;
+    var idannonce = req.body.idannonce;
     var agentid = req.body.agentid;
     var quest = req.body.message;
     var objetmsg = req.body.objetmsg;
-    console.log("idannonce2: "+annonceid)
+
     var collection = db.get('questioncollection');
     collection.insert({
         "objetmsg": objetmsg,
-        "annonce_id" : annonceid,
+        "annonce_id" : idannonce,
         "client_id" : clientid,
         "agent_id" : agentid,
-        "question" : quest
+        "question" : quest,
+        "objet_msg": objetmsg
     }, function (err, doc) {
         if (err) {
-            db.collection('annoncecollection').findOne({"_id":annonceid},function(err,annonce){
-                db.collection('usercollection').findOne({"_id":clientid},function(err,client){
-                    res.render('question',{"annonce": annonce,"client": client});
-                })
-            })
+            res.send("There was a problem adding the information to the database.");
         }
         else {
-            db.get('annoncecollection').find({},function (e,ann){
-                db.collection('usercollection').findOne({"_id":clientid},function(err,client){
-                    res.render('profil',{"result":ann,"sess": client.email,"sesid": req.session.id,"iduser": client._id});
-                });
+            db.get('annoncecollection').find({},function (e,result){
+                res.render('profil',{"result":result,"sess": emailclient,"sesid": req.session.id,"iduser": userid});
+                
               });        
         }
     });
@@ -42,8 +38,8 @@ exports.questionpage = function(req, res) {
     var db = req.db;
     var idannonce = req.params.idannonce;
     var idclient = req.params.idclient;
-    //console.log('id annonce: '+ idannonce);
-    //console.log(' client : '+idclient);
+    console.log('id annonce: '+ idannonce);
+    console.log(' client : '+idclient);
     db.collection('annoncecollection').findOne({"_id":idannonce},function(err,annonce){
         db.collection('usercollection').findOne({"_id":idclient},function(err,client){
             res.render('question',{"annonce": annonce,"client": client});
@@ -55,15 +51,16 @@ exports.questionpage = function(req, res) {
 /* redirect page msg */
 exports.messagerieClient = function(req, res) {
     var db = req.db;
-    var idclient = req.params.idclient;
-    db.collection('questioncollection').find({"client_id":idclient}, function(err,quest){
-        //res.send('value : '+quest);
-        res.render('messagerieClient',{'result':quest});
+    var clientid = req.body.clientid;
+    // db.get('questioncollection').find({},function (e,resu){
+    //     console.log('result :'+resu +' clientid: ' +clientid);
+    //     res.render('messagerieClient',{"resu":resu,"clientid": clientid});
+    //     req.db.close();
+    //   });
+    db.get('questioncollection') .findOne({'userid':clientid}).then(function(result){
+        console.log('res :' +result)
+        res.render('messagerieClient',{'result':result,"clientid": clientid});
     });
-    // db.get('questioncollection') .findOne({'userid':clientid}).then(function(result){
-    //     console.log('res :' +result)
-    //     res.render('messagerieClient',{'result':result,"clientid": clientid});
-    // });
 }
 
 

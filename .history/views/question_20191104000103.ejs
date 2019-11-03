@@ -14,10 +14,9 @@
                         <p class="lead"><%= annonce.desc %></p>
         
         
-                        <form id="contact-form" method="post" action="/envoyermsg" role="form">
+                        <form id="contact-form" method="post" action="contact.php" role="form">
                                 <input type="hidden" name="agentid" value="<%= annonce.user.us_id %>">
                                 <input type="hidden" name="clientid" value="<%= client._id  %>">
-                                <input type="hidden" name="annonceid" value="<%= annonce._id %>">
         
                             <div class="messages"></div>
         
@@ -33,8 +32,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="form_lastname">ID d'annonce  </label>
-                                            <input type="text"  value="<%= annonce._id %>" class="form-control"  disabled="disabled" >
+                                            <label for="form_lastname">ID d'annonce </label>
+                                            <input id="idannonce" type="text" name="idannonce" class="form-control" value="<%= annonce._id %>" disabled="disabled" >
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -43,7 +42,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="form_email">Objet</label>
-                                            <input id="form_email" type="text" name="objetmsg" class="form-control" placeholder="Objet *"  required="required" data-error="Valid Object is required.">
+                                            <input id="form_email" type="text" name="objet" class="form-control" placeholder="Objet *"  required="required" data-error="Valid Object is required.">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -58,10 +57,16 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="submit" class="btn btn-success btn-send" value="Envoyer le message">
+                                        <input type="submit" class="btn btn-success btn-send" value="Envoyer">
                                     </div>
                                 </div>
-                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="text-muted">
+                                            <strong>*</strong> These fields are required. Contact form template by
+                                            <a href="https://bootstrapious.com/p/how-to-build-a-working-bootstrap-contact-form" target="_blank">Bootstrapious</a>.</p>
+                                    </div>
+                                </div>
                             </div>
         
                         </form>

@@ -18,7 +18,8 @@ exports.questionAnnonce = function(req, res) {
         "annonce_id" : annonceid,
         "client_id" : clientid,
         "agent_id" : agentid,
-        "question" : quest
+        "question" : quest,
+        "objet_msg": objetmsg
     }, function (err, doc) {
         if (err) {
             db.collection('annoncecollection').findOne({"_id":annonceid},function(err,annonce){

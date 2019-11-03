@@ -17,7 +17,6 @@
                         <form id="contact-form" method="post" action="/envoyermsg" role="form">
                                 <input type="hidden" name="agentid" value="<%= annonce.user.us_id %>">
                                 <input type="hidden" name="clientid" value="<%= client._id  %>">
-                                <input type="hidden" name="annonceid" value="<%= annonce._id %>">
         
                             <div class="messages"></div>
         
@@ -34,7 +33,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="form_lastname">ID d'annonce  </label>
-                                            <input type="text"  value="<%= annonce._id %>" class="form-control"  disabled="disabled" >
+                                            <input type="text" name="idnnonce" value="<%= annonce._id %>" class="form-control"  disabled="disabled" >
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>

@@ -1,12 +1,16 @@
 <table class="table table-bordered" name="tableName">
         <tr>
-            <th>Objet</th>
+            <th>Id d'annonce</th>
+            <th>Id d'utilisateur</th>
+            <th>Id d'agent</th>
             <th>Message</th>
             <th></th>
         </tr>
         <% result.forEach(function (result) { %> 
         <tr>
             <td><%= result.objet_msg %></td>
+            <td><%= result.question %></td>
+            <td><%= result.agentid %></td>
             <td><%= result.question %></td>
             <% }); %>
         </tr>

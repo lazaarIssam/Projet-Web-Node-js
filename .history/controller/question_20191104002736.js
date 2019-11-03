@@ -18,7 +18,8 @@ exports.questionAnnonce = function(req, res) {
         "annonce_id" : annonceid,
         "client_id" : clientid,
         "agent_id" : agentid,
-        "question" : quest
+        "question" : quest,
+        "objet_msg": objetmsg
     }, function (err, doc) {
         if (err) {
             db.collection('annoncecollection').findOne({"_id":annonceid},function(err,annonce){
@@ -58,7 +59,7 @@ exports.messagerieClient = function(req, res) {
     var idclient = req.params.idclient;
     db.collection('questioncollection').find({"client_id":idclient}, function(err,quest){
         //res.send('value : '+quest);
-        res.render('messagerieClient',{'result':quest});
+        res.render('messagerieClient',{'result':quest,"clientid": clientid});
     });
     // db.get('questioncollection') .findOne({'userid':clientid}).then(function(result){
     //     console.log('res :' +result)

@@ -8,7 +8,10 @@
     <h1>Profil : <%= sess %> </h1>
     <ul>
       <%= sesid %> | <%= iduser %> 
-      <a href="/messagerieCl/<%= iduser %>" role="button" class="btn btn-primary">Ma Messagerie</a>
+      <form method="POST" action="/messagerieCl">
+        <input type="hidden" name="clientid" value="<%= iduser %>">
+        <button class="btn btn-primary" type="submit">Ma Messagerie</button>
+      </form>
     </ul>
     <h1>annonce</h1><br>
     <% result.forEach(function (ann) { %> 
