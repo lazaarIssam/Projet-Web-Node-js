@@ -26,33 +26,21 @@
       <a href="/agentmessagerie/<%= u_id %>" role="button" class="btn btn-info">Messagerie</a>
 </div>
     <ul> 
-      <h1>Mes annonces:</h1>
+      <h1>Ma messagerie</h1>
     <!-- ----------------------------------------------------------- -->
       <table class="table table-bordered" name="tableName">
           <tr>
               <th>Photo</th>
               <th>Titre</th>
-              <th>Typpe de bien</th>
-              <th>status de publiction</th>
-              <th>status de transaction</th>
-              <th>prix</th>
-              <th>Date</th>
-              <th>Description</th>
               <th>Action</th>
           </tr>
           <% listannonceuser.forEach(function (ann) { %> 
           <tr>
               <td><%= ann.photo %></td>
               <td><%= ann.titre %></td>
-              <td><%= ann.typedebien %></td>
-              <td><%= ann.statusPub %></td>
-              <td><%= ann.statusTransaction %></td>
-              <td><%= ann.prix %></td>
-              <td><%= ann.date %></td>
-              <td><%= ann.desc %></td>
               <td>
-                  <a href="/updatepage/<%= ann._id %>" class="btn btn-primary" role="button">Modifier</a>
-                  <a href="/deleteannonce/<%= ann._id %>/<%= ann.user.us_id %>" class="btn btn-primary" role="button">Supprimer</a>
+                  <a href="#" class="btn btn-primary" role="button">Reponse</a>
+                  <a href="#" class="btn btn-info" role="button">Annonce</a>
               </td>
               <% }); %>
           </tr>

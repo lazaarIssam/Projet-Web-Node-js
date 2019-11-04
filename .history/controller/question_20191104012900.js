@@ -80,7 +80,7 @@ exports.messagerieagent = function(req,res){
     var db=req.db;
     var idagent = req.params.idagent;
     db.collection('questioncollection').find({"agent_id":idagent},function(err,result){
-        res.render('msgAgent',{"result": result});
+        res.render('msgAgent',{"result": annonce});
     });
 
 }

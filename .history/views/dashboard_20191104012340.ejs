@@ -15,15 +15,15 @@
       <h4><strong>Nom</strong> <%= u_name %></h4>
       <h4><strong>Email</strong> <%= u_email %></h4>
     </div>
-    <div class="row">
-      <form method="POST" action="/addAnnnP" >
-        <input type="hidden" value="<%= u_id %>" name="us_id">
-        <input type="hidden" value="<%= u_name %>" name="us_name">
-        <input type="hidden" value="<%= u_email %>" name="us_email">
-        <input type="hidden" value="<%= u_typecompte %>" name="us_typecompte"> 
-        <button type="submit" class="btn btn-success">Créer un post</button>
-      </form> &nbsp;
-      <a href="/agentmessagerie/<%= u_id %>" role="button" class="btn btn-info">Messagerie</a>
+    <div>
+    <form method="POST" action="/addAnnnP" >
+      <input type="hidden" value="<%= u_id %>" name="us_id">
+      <input type="hidden" value="<%= u_name %>" name="us_name">
+      <input type="hidden" value="<%= u_email %>" name="us_email">
+      <input type="hidden" value="<%= u_typecompte %>" name="us_typecompte"> 
+      <button type="submit" class="btn btn-success">Créer un post</button>
+</form>
+<a href="/agentmessagerie/<%= u_id %>" role="button" class="btn btn-info">Messagerie</a>
 </div>
     <ul> 
       <h1>Mes annonces:</h1>

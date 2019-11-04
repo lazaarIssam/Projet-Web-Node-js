@@ -10,7 +10,7 @@
             <td><%= result.question %></td>
             <td>
                     <a href="/msgan/<%= result.annonce_id %>" role="button">Voir l'annonce</a>
-                    <a href="/reponsemsg/<%= result._id %>" role="button">Voir reponse</a>
+                    <a href="/reponsemsg/<%= result.annonce_id %>" role="button">Voir reponse</a>
             </td>
             <% }); %>
         </tr>

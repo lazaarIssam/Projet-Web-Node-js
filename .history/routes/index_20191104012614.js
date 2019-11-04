@@ -77,6 +77,6 @@ router.get('/deleteannonce/:idanno/:idus', annoCont.deleteann);
 router.get('/msgan/:idanno', questionCont.msgannonce);
 
 /* Messagerie agent  */
-router.get('/agentmessagerie/:idagent', questionCont.messagerieagent);
+router.get('/agentmessagerie/:idagent', questionCont.msgannonce);
 
 module.exports = router;
