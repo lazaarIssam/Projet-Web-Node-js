@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Acceuil </title>
+    <title>Acceuil <%= sesID %> </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
         <a role="button" href="/login" class="btn btn-outline-success">Connexion</a>
         <a role="button" href="/singupuser" class="btn btn-outline-danger" name="singupbtn">Inscription</a>
 
   </head>
-  <body class="center">
+  <body>
     <h1>Annonce List  </h1>
-    <div class="row">
-      <% annoncelist.forEach(function (ann) { %>
-        <div class="col-sm-6"> 
-        <div class="card" style="width: 35rem;">
-          <img class="card-img-top" src="/images/aaaa.jpg" alt="Card image cap">
+      <% annoncelist.forEach(function (ann) { %> 
+        <div class="card" style="width: 20rem;">
+          <img class="card-img-top" src="aaaa.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><%= ann.titre %></h5>
             <p class="card-text"><%= ann.desc %></p>
-            <a href="/msgan/<%= ann._id %>" class="btn btn-primary" role="button">Details</a>
+            <a href="/msgan/<%= ann._id %>" class="btn btn-primary" role="button">Voir l'annonce</a>
         </div> 
-      </div> <br>
-      </div>
+      </div><br>
         <% }); %>
-      </div> 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

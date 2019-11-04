@@ -11,16 +11,16 @@
   <body class="center">
     <h1>Annonce List  </h1>
     <div class="row">
-      <% annoncelist.forEach(function (ann) { %>
-        <div class="col-sm-6"> 
-        <div class="card" style="width: 35rem;">
+        <div class="col-sm-6">
+      <% annoncelist.forEach(function (ann) { %> 
+        <div class="card" style="width: 20rem;">
           <img class="card-img-top" src="/images/aaaa.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><%= ann.titre %></h5>
             <p class="card-text"><%= ann.desc %></p>
             <a href="/msgan/<%= ann._id %>" class="btn btn-primary" role="button">Details</a>
         </div> 
-      </div> <br>
+        </div> <br>
       </div>
         <% }); %>
       </div> 
