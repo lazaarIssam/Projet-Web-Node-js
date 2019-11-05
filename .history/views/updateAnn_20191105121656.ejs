@@ -13,7 +13,7 @@
                     <!-- Start form -->
                                   <form method="post"  action="/updateannonce">
                                     <input type="hidden" name="anoid" value="<%= annonce._id %>">
-                                    <input type="hidden" name="userid" value="<%= annonce.user.us_id %>">
+                                    <input type="hidden" name="userid" value="<%= annonce.user.u_id %>">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Titre</label>
                                         <input type="text" class="form-control" id="inputtitre"   placeholder="titre" name="titre" value="<%= annonce.titre %>">

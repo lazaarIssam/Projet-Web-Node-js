@@ -38,7 +38,7 @@ exports.insererAnnonce = function(req, res) {
       var description = req.body.description;
       var prix = req.body.prix;
       var date = req.body.dateAv;
-      //var imgg = "./public/images"+String(req.file.myFile);
+      var imgg = "./public/images"+String(req.file.myFile);
       var collection = db.get('annoncecollection');
       collection.insert({
           "titre" : titre,
@@ -54,7 +54,7 @@ exports.insererAnnonce = function(req, res) {
             "us_email": req.body.us_email,
             "us_typecompte": req.body.us_typecompte
           },
-          "photo" : 'imgg'
+          "photo" : imgg
       }, function (err, doc) {
           if (err) {
               res.send("There was a problem adding the information to the database.");
@@ -101,8 +101,6 @@ exports.updatep= function(req, res) {
 exports.updateann= function(req, res) {
   var db = req.db;
   console.log('Item id: '+req.body.anoid);
-  var iduser = req.body.userid;
-  console.log('user id: '+iduser.toString());
   var newvalues = { $set: {titre: req.body.titre,
                           typedebien: req.body.typedebien,
                           statusPub: req.body.statusPub,
@@ -114,12 +112,13 @@ exports.updateann= function(req, res) {
                         }
                       };
   db.get('annoncecollection').update({"_id":req.body.anoid}, newvalues,function(err, data) {
-    db.get('usercollection').findOne({"_id": iduser.toString()},function(e, user){
-      db.get('annoncecollection').find({"user.us_id": iduser.toString()},function(e, annonce){
-        res.render('dashboard',{"listannonceuser": annonce,"u_id": user._id, "u_name": user.username, "u_email": user.email, "u_typecompte": user.typecompte});
+    if (err) throw err; 
+    //
+    db.get('annoncecollection').find({"user.us_id": req.body.anoid},function(e, docs){
+      //res.render("dashboard",{"listannonceuser": docs,"sesid":docs.user.us_id,"sess":docs.user.us_id,"u_id": docs.user.us_id, "u_name": docs.user.us_name, "u_email": docs.user.us_email, "u_typecompte": docs.user.us_typecompte});
     });
+    //db.close();
   });
-});
 }
 
 /* update page */

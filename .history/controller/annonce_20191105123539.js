@@ -38,7 +38,7 @@ exports.insererAnnonce = function(req, res) {
       var description = req.body.description;
       var prix = req.body.prix;
       var date = req.body.dateAv;
-      //var imgg = "./public/images"+String(req.file.myFile);
+      var imgg = "./public/images"+String(req.file.myFile);
       var collection = db.get('annoncecollection');
       collection.insert({
           "titre" : titre,
@@ -54,7 +54,7 @@ exports.insererAnnonce = function(req, res) {
             "us_email": req.body.us_email,
             "us_typecompte": req.body.us_typecompte
           },
-          "photo" : 'imgg'
+          "photo" : imgg
       }, function (err, doc) {
           if (err) {
               res.send("There was a problem adding the information to the database.");
@@ -114,12 +114,11 @@ exports.updateann= function(req, res) {
                         }
                       };
   db.get('annoncecollection').update({"_id":req.body.anoid}, newvalues,function(err, data) {
-    db.get('usercollection').findOne({"_id": iduser.toString()},function(e, user){
-      db.get('annoncecollection').find({"user.us_id": iduser.toString()},function(e, annonce){
-        res.render('dashboard',{"listannonceuser": annonce,"u_id": user._id, "u_name": user.username, "u_email": user.email, "u_typecompte": user.typecompte});
+    db.get('usercollection').findOne({"_id": iduser},function(e, user){
+      db.get('annoncecollection').find({"user.us_id": user._id},function(e, annonce){
+       res.json(annonce+'|| <br> ||'+user);
     });
   });
-});
 }
 
 /* update page */
