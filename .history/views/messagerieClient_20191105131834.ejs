@@ -4,6 +4,9 @@
     <title>Acceuil </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+        <a role="button" href="/login" class="btn btn-outline-success">Connexion</a>
+        <a role="button" href="/singupuser" class="btn btn-outline-danger" name="singupbtn">Inscription</a>
+
   </head>
   <body class="center">
 <table class="table table-bordered" name="tableName">
@@ -18,7 +21,7 @@
             <td><%= result.question %></td>
             <td>
                     <a href="/msgan/<%= result.annonce_id %>" role="button">Voir l'annonce</a>
-                    <a href="/resptoclient/<%= result._id %>" role="button">conversation</a>
+                    <a href="/resptoclient/<%= result._id %>" role="button">response</a>
             </td>
             <% }); %>
         </tr>

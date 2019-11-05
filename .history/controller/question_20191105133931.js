@@ -112,7 +112,7 @@ exports.responseclient= function(req,res){
         db.collection('questioncollection').findOne({"_id":req.body.idquestion},function(err,question){
             db.collection('usercollection').findOne({"_id":req.body.idclient},function(err,client){
                 db.collection('annoncecollection').findOne({"_id":req.body.idannonce,"user.us_id":req.body.idagent},function(err,annonce){
-                    db.collection('responsecollection').find({"idannonce":annonce._id.toString()},function(err,response){
+                    db.collection('responsecollection').find({"idannonce":idannonce},function(err,response){
                          res.render('conversation',{"question":question,"client":client,"annonce":annonce,"response":response});
                     });
                 });

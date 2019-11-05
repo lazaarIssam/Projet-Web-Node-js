@@ -88,9 +88,9 @@ exports.restoclient= function(req,res){
     db.collection('questioncollection').findOne({"_id":idquestion},function(err,question){
         db.collection('usercollection').findOne({"_id":question.client_id},function(err,client){
             db.collection('annoncecollection').findOne({"_id":question.annonce_id,"user.us_id":question.agent_id},function(err,annonce){
-                db.collection('responsecollection').find({"idannonce":annonce._id.toString()},function(err,response){
-                    res.render('conversation',{"question":question,"client":client,"annonce":annonce,"response":response});
-                     //res.json('question: '+question._id+' client: '+client._id+' annonce: '+annonce._id+' response: '+response+' idquestion: '+idquestion);
+                db.collection('responsecollection').find({},function(err,response){
+                    // res.render('conversation',{"question":question,"client":client,"annonce":annonce,"response":response});
+                     res.json('question: '+question._id+' client: '+client._id+' annonce: '+annonce._id+' response: '+response+' idquestion: '+idquestion);
                 });
             });
         });
@@ -112,7 +112,7 @@ exports.responseclient= function(req,res){
         db.collection('questioncollection').findOne({"_id":req.body.idquestion},function(err,question){
             db.collection('usercollection').findOne({"_id":req.body.idclient},function(err,client){
                 db.collection('annoncecollection').findOne({"_id":req.body.idannonce,"user.us_id":req.body.idagent},function(err,annonce){
-                    db.collection('responsecollection').find({"idannonce":annonce._id.toString()},function(err,response){
+                    db.collection('responsecollection').find({"idannonce":idannonce},function(err,response){
                          res.render('conversation',{"question":question,"client":client,"annonce":annonce,"response":response});
                     });
                 });
