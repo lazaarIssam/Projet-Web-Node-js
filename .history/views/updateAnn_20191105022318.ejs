@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Modifier annonce </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+        <div class="center">	
+                <div class="row">
+                <h2><strong>Insertion d'annonce </strong> <br/></h2><br/>
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <!-- Start form -->
+                                  <form method="post"  action="/updateannonce">
+                                    <input type="hidden" name="anoid" value="<%= annonce._id %>">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Titre</label>
+                                        <input type="text" class="form-control" id="inputtitre"   placeholder="titre" name="titre" value="<%= annonce.titre %>">
+                                      </div>
+                                      <div class="form-group">
+                                            <label >Type de bien</label>
+                                            <select class="form-control form-control-sm" name="typedebien" value="<%= annonce.typedebien %>" id="typedebien">
+                                              <option type="text" id="client" value="vente">à la vente</option>
+                                              <option type="text" id="agent" value="location">à la location</option>
+                                            </select>
+                                          </div>
+                                          <div class="form-group">
+                                                <label >Status de la publication</label>
+                                                <select class="form-control form-control-sm" name="statusPub" value="<%= annonce.statusPub %>" id="statusPub">
+                                                  <option type="text" id="publie" value="publie">Publier</option>
+                                                  <option type="text" id="non publie" value="nonpublie">Non publier</option>
+                                                </select>
+                                              </div>
+                                              <div class="form-group">
+                                                    <label >Status de la Transaction</label>
+                                                    <select class="form-control form-control-sm" name="statusTransaction" value="<%= annonce.statusTransaction %>" id="statusTransaction">
+                                                      <option type="text" id="disponible" value="disponible">disponible</option>
+                                                      <option type="text" id="louee" value="louee">Louée</option>
+                                                      <option type="text" id="vendue" value="vendue">Vendue</option>
+                                                    </select>
+                                                  </div>                
+                                    <div class="form-group">
+                                      <label for="exampleInputEmail1">Description </label>
+                                      <input type="text" class="form-control" id="inputdescription " value="<%= annonce.desc %>"   placeholder="description " name="description">
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="control-label">Prix</label>
+                                            <div class="form-group">
+                                              <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text">£</span>
+                                                </div>
+                                                <input type="number" value="<%= annonce.prix %>" name="prix" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                                              <input name ="date"class="form-control" type="date" value="<%= annonce.date %>" id="example-date-input">
+                                          </div>
+
+                                          <div class="input-group mb-3">
+                                            <div class="custom-file">
+                                              <input type="file" name="img" class="custom-file-input" id="inputGroupFile02">
+                                              <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choisir une image</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                              <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+                                            </div>
+                                          </div>
+
+                                    <div class="form-check">
+                                      <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">Modifier</button>
+                                    </div>
+                                    
+                                  </form>
+                    <!-- End form -->
+                  </div>
+                </div>
+              </div>
+  </body>
+</html>
